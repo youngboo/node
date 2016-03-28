@@ -34,7 +34,7 @@ var options = {
 var req = http.request(options,function(res){
     console.log('status:'+res.statusCode)
     console.log('headers: '+JSON.stringify(res.headers))
-    console.log('content'+res.)
+    //console.log('content'+res)
     res.on('data',function(chunk){
         console.log(Buffer.isBuffer(chunk))
         console.log(typeof chunk)
