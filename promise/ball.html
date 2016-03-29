@@ -24,7 +24,7 @@
 <div class="ball ball1" style="margin-left: 0;"></div>
 <div class="ball ball2" style="margin-left: 0;"></div>
 <div class="ball ball3" style="margin-left: 0;"></div>
-<script src="../node_modules/bluebird/js/browser/bluebird.min.js"></script>
+<script src="../node_modules/bluebird/js/browser/bluebird.js"></script>
 <script  type="text/javascript">
     var ball1 = document.querySelector('.ball1')
     var ball2 = document.querySelector('.ball2')
@@ -58,17 +58,16 @@
     })*/
 
 var Promise = window.Promise
-
+console.log(Promise)
     function promiseAnimate(ball,distance){
         return new Promise(function(resolve,reject){
             function _animate(){
                 setTimeout(function(){
                     var marginLeft = parseInt(ball.style.marginLeft,10)
                     if(marginLeft==distance){
-                        resolve
+                        resolve()
                     }else{
-
-                        if(marginLeft<distance){
+                        if(marginLeft < distance){
                             marginLeft++
                         }else {
                             marginLeft--
@@ -82,7 +81,7 @@ var Promise = window.Promise
             _animate()
         })
     }
-    promiseAnimate(ball2,100)
+    promiseAnimate(ball1,100)
             .then(function(){
                  return promiseAnimate(ball2, 200)
             })
