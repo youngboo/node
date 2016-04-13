@@ -6,7 +6,7 @@ var http = require('http')
 var url = 'http://www.imooc.com/learn/564'
 var domain = 'http://www.imooc.com/learn/'
 var cheerio = require('cheerio')
-var ids =[564,599]
+var ids =[564,599,641,607,589]
 function promiseCrawler(url){
     return new Promise(function(resolve,reject){
         var url = domain+ids[i]
@@ -24,5 +24,25 @@ function promiseCrawler(url){
         })
     })
 }
-Promise.all()
+
+function crawlerSomePage([]){
+    pages.forEach(function(item){
+         var page = domain + item
+        console.log("正在爬取"+page)
+        http.get(page,function(res){
+            var html = ''
+            res.on('data',function(data){
+                html +=data
+            })
+            res.on('end',function(){
+               console.log("")
+
+            })
+        }).on('error', function (e) {
+            console.log('爬取出错')
+        })
+    })
+}
+crawlerSomePage(pages)
+
 
